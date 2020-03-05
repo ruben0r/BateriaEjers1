@@ -8,9 +8,10 @@ public class MainBateria {
 		Menu();
 	}
 	static NumOrdenado numO=new NumOrdenado();
+	static NIM n=new NIM();
 	static Cifras cif=new Cifras();
 	public static void Menu() {
-		String opciones[]= {"Ejercicio 6","Ejercicio 7","Salir"};
+		String opciones[]= {"Ejercicio 6","Ejercicio 7","NIM","Salir"};
 		int opcion=JOptionPane.showOptionDialog(null, "¿Qué ejercicio desea realizar", "Menú ejercicios", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, null);
 		switch(opcion) {
 		case 0:
@@ -22,6 +23,12 @@ public class MainBateria {
 		case 1:
 		{
 			Menu7();
+		}
+		Menu();
+		break;
+		case 2:
+		{
+			Menu8();
 		}
 		Menu();
 		break;
@@ -80,4 +87,35 @@ public class MainBateria {
 		break;
 		}
 	}
-}
+	public static void Menu8()
+	{
+		String opc[]= {"Coger ficha","Ver Tablero"};
+		int op=JOptionPane.showOptionDialog(null, "¿Qué desea hacer?", "Menú Numeros ordenados Ejercicio 6", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opc, null);
+		switch(op) 
+		{
+			case 0:
+			{	
+				try
+				{
+					n.CogerFichas();
+				}
+				catch (FichasMaximas exc)
+				{
+					JOptionPane.showMessageDialog(null, exc.toString());
+				}
+				catch (CeldaFake exc)
+				{
+					JOptionPane.showMessageDialog(null, exc.toString());
+				}
+			}
+				Menu8();
+				break;
+			case 1:
+			{
+				n.ImprimirMatriz();
+			}
+				Menu8();
+				break;
+		}
+	}
+}	
